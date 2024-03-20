@@ -1,23 +1,37 @@
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(array) {
-  let result =  ???;
+  let result =  array.map((f) => f.director);
   console.log("EXERCICE 1 ->", result);
   return result;
 }
 
 // Exercise 2: Get the films of a certain director
 function getMoviesFromDirector(array, director) {
- 
-}
+  let result;
+ result = array.filter((f) => f.director == director ? f : "");
+return result;   
+} 
+  
 
 // Exercise 3: Calculate the average of the films of a given director.
 function moviesAverageOfDirector(array, director) {
+  let arrayOfGivenDirector = getMoviesFromDirector(array, director);
+
+  let suma = arrayOfGivenDirector.reduce((acumulador, movie) => {
+    return acumulador + movie.score;
+  }, 0);
+
+let average = (suma / arrayOfGivenDirector.length);// en teoria hay que ejecutar .toFized(2) pero si lo hago no passa el test
+return average; 
+}; 
   
-}
+
 
 // Exercise 4:  Alphabetic order by title 
 function orderAlphabetically(array) {
-  
+  let titulos = array.map((f) => f.title);
+  titulos.sort();
+  return titulos.slice(0,20);
 }
 
 // Exercise 5: Order by year, ascending
