@@ -8,12 +8,12 @@ function getAllDirectors(array) {
 // Exercise 2: Get the films of a certain director
 function getMoviesFromDirector(array, director) {
   let result;
-  result = array.filter((f) => f.director == director ? f : "");
+  result = array.filter((f) => f.director === director); // como no hacer nada en el else??
   return result;
 }
 
 
-// Exercise 3: Calculate the average of the films of a given director.
+// Exercise 3: Calculate the average of a given director's films.
 function moviesAverageOfDirector(array, director) {
   let arrayOfGivenDirector = getMoviesFromDirector(array, director);
 
@@ -21,9 +21,9 @@ function moviesAverageOfDirector(array, director) {
     return acumulador + movie.score;
   }, 0);
 
-  let average = (suma / arrayOfGivenDirector.length);// en teoria hay que ejecutar .toFized(2) pero si lo hago no passa el test
+  let average = parseFloat((suma / arrayOfGivenDirector.length).toFixed(2));// en teoria hay que ejecutar .toFized(2) pero si lo hago no passa el test
   return average;
-};
+};  
 
 
 
@@ -57,7 +57,7 @@ function moviesAverageByCategory(movies, category) {
     return acumulador + movie.score;
   }, 0);
 
-  let averageByCategory = (accumulatedByCategory / matchingItems.length).toFixed(2) / 1;
+  let averageByCategory = parseFloat((accumulatedByCategory / matchingItems.length).toFixed(2));
 
   return averageByCategory;
 
@@ -100,7 +100,7 @@ function hoursToMinutes(movies) {
 
 function bestFilmOfYear(movies, year) {
 
-  let yearMovies = movies.filter((f) => f.year === year ? f : "");// filter films by year
+  let yearMovies = movies.filter((f) => f.year === year);// filter films by year
 
   let bestMovieOfYear = yearMovies.sort((a, b) => a.score - b.score); // order asc by score, and limit the array to 1
 
